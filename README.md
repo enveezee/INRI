@@ -7,4 +7,4 @@ It also needs to have more settings, commands to lookup languages, translations,
 
 It however works, and matches all sorts of citations in chat including ranges like 1 John 3:1-4, lists Gal6,12,15 etc.. 
 
-It dosen't require an API key.
+It dosen't require an API key or any 3rd party dependencies.
