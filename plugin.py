@@ -61,11 +61,11 @@ Books = [
 
 RegExp = [
     # Regular expression for matching (possible) citations.
-    r'(^|[\s]{1}[\d]?[\s]*[\w]{2,}[\s]*)',  # Match group 1 (Book).
+    r'([\d]?[\s]*[a-zA-Z]{2,}[\s]*)',       # Match group 1 (Book).
     r'([\d]{1,3})[:]{1}',                   # Match group 2 (Chapter).
     r'([\d]{1,3}[-]?[\s]*[\d]{0,3})',       # Match group 3 (Verse).
     r'([\d\s,;:-]*)',                       # Match group 4 (List).
-    r'(\([\w]*\))?',                        # Match group 5 (Translation).
+    r'(\([a-zA-Z]*\))?',                    # Match group 5 (Translation).
 ]
 
 Translations = {
@@ -298,7 +298,7 @@ class INRI(callbacks.Plugin):
                     verses = list(book['chapter'].keys())
                     for verse in verses:
                         text = book['chapter'][verse]['verse'].replace('\r\n','')
-                        irc.reply(f'"{verse}. {text}"', prefixNick=False)
+                        irc.reply(f'{Book[-1]} {ch}: "{verse}. {text}"', prefixNick=False)
 
 
 Class = INRI
