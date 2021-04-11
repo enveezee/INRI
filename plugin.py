@@ -69,33 +69,33 @@ RegExp = [
 ]
 
 Translations = {
-    'Afrikaans': [  ['aov', 'Ou Vertaling']],
-    'Albanian': [   ['albanian', 'Albanian']],
-    'Amharic': [    ['amharic', 'Amharic NT'],
+    'afrikaans': [  ['aov', 'Ou Vertaling']],
+    'albanian': [   ['albanian', 'Albanian']],
+    'amharic': [    ['amharic', 'Amharic NT'],
                     ['hsab', 'Haile Selassie Amharic Bible']],
-    'Arabic': [     ['arabicsv', 'Smith and Van Dyke']],
-    'Aramaic': [    ['peshitta', 'Peshitta NT']],
-    'Armenian': [   ['easternarmenian', 'Eastern Genesis Exodus Gospels'],
+    'arabic': [     ['arabicsv', 'Smith and Van Dyke']],
+    'aramaic': [    ['peshitta', 'Peshitta NT']],
+    'armenian': [   ['easternarmenian', 'Eastern Genesis Exodus Gospels'],
                     ['westernarmenian', 'Western NT']],
-    'Basque': [     ['basque', 'Navarro Labourdin NT']],
-    'Breton': [     ['breton', 'Gospels']],
-    'Bulgarian': [  ['bulgarian1940', 'Bulgarian Bible 1940']],
-    'Chamorro': [   ['chamorro', 'Psalms Gospels Acts']],
-    'Chinese': [    ['cns', 'NCV Simplified'],
+    'basque': [     ['basque', 'Navarro Labourdin NT']],
+    'breton': [     ['breton', 'Gospels']],
+    'bulgarian': [  ['bulgarian1940', 'Bulgarian Bible 1940']],
+    'chamorro': [   ['chamorro', 'Psalms Gospels Acts']],
+    'chinese': [    ['cns', 'NCV Simplified'],
                     ['cnt', 'NCV Traditional'],
                     ['cus', 'Union Simplified'],
                     ['cut', 'Union Traditional']],
-    'Coptic': [     ['bohairic', 'Bohairic NT'],
+    'coptic': [     ['bohairic', 'Bohairic NT'],
                     ['coptic', 'New Testament'],
                     ['sahidic', 'Sahidic NT']],
-    'Croatian': [   ['croatia', 'Croatian']],
-    'Czech': [      ['bkr', 'Czech BKR'],
+    'croatian': [   ['croatia', 'Croatian']],
+    'czech': [      ['bkr', 'Czech BKR'],
                     ['cep', 'Czech CEP'],
                     ['kms', 'Czech KMS'],
                     ['nkb', 'Czech NKB']],
-    'Danish': [     ['danish', 'Danish']],
-    'Dutch': [      ['statenvertaling', 'Dutch Staten Vertaling']],
-    'English': [    ['kjv', 'King James Version'],
+    'danish': [     ['danish', 'Danish']],
+    'dutch': [      ['statenvertaling', 'Dutch Staten Vertaling']],
+    'english': [    ['kjv', 'King James Version'],
                     ['akjv', 'American King James Version'],
                     ['asv', 'American Standard Version'],
                     ['basicenglish', 'Basic English Bible'],
@@ -104,23 +104,23 @@ Translations = {
                     ['weymouth', 'Weymouth NT'],
                     ['web', 'World English Bible'],
                     ['ylt', 'Youngs Literal Translation']],
-    'Esperanto': [  ['esperanto', 'Esperanto']],
-    'Estonian': [   ['estonian', 'Estonian']],
-    'Finnish': [    ['finnish1776', 'Finnish Bible 1776'],
+    'esperanto': [  ['esperanto', 'Esperanto']],
+    'estonian': [   ['estonian', 'Estonian']],
+    'finnish': [    ['finnish1776', 'Finnish Bible 1776'],
                     ['pyharaamattu1933', 'Pyha Raamattu 1933'],
                     ['pyharaamattu1992', 'Pyha Raamattu 1992']],
-    'French': [     ['darby', 'Darby'],
+    'french': [     ['darby', 'Darby'],
                     ['ls1910', 'Louis Segond 1910'],
                     ['martin', 'Martin 1744'],
                     ['ostervald', 'Ostervald 1996 revision']],
-    'Georgian': [   ['Gospels Acts James', 'Georgian']],
-    'German': [     ['elberfelder', 'Elberfelder 1871'],
+    'georgian': [   ['Gospels Acts James', 'Georgian']],
+    'german': [     ['elberfelder', 'Elberfelder 1871'],
                     ['elberfelder1905', 'Elberfelder 1905'],
                     ['luther1545', 'Luther 1545'],
                     ['luther1912', 'Luther 1912'],
                     ['schlachter', 'Schlachter 1951']],
-    'Gothic': [     ['gothic', 'Gothic Nehemiah NT Portions']],
-    'Greek': [      ['moderngreek', 'Greek Modern'],
+    'gothic': [     ['gothic', 'Gothic Nehemiah NT Portions']],
+    'greek': [      ['moderngreek', 'Greek Modern'],
                     ['majoritytext', 'NT Byzantine Majority Text 2000 Parsed'],
                     ['byzantine', 'NT Byzantine Majority Text 2000'],
                     ['textusreceptus', 'NT Textus Receptus 1550 1894 Parsed'],
@@ -132,49 +132,49 @@ Translations = {
                     ['lxx', 'OT LXX Accented'],
                     ['lxxunaccentspar', 'OT LXX Unaccented Roots Parsing'],
                     ['lxxunaccents', 'OT LXX Unaccented']],
-    'Hebrew': [     ['aleppo', 'Aleppo Codex'],
+    'hebrew': [     ['aleppo', 'Aleppo Codex'],
                     ['modernhebrew', 'Hebrew Modern'],
                     ['bhsnovowels', 'OT BHS Consonants Only'],
                     ['bhs', 'OT BHS Consonants and Vowels'],
                     ['wlcnovowels', 'OT WLC Consonants Only'],
                     ['wlc', 'OT WLC Consonants and Vowels'],
                     ['codex', 'OT Westminster Leningrad Codex']],
-    'Hungarian': [  ['karoli', 'Hungarian Karoli']],
-    'Italian': [    ['giovanni', 'Giovanni Diodati Bible 1649'],
+    'hungarian': [  ['karoli', 'Hungarian Karoli']],
+    'italian': [    ['giovanni', 'Giovanni Diodati Bible 1649'],
                     ['riveduta', 'Riveduta Bible 1927']],
-    'Kabyle': [     ['kabyle', 'Kabyle NT']],
-    'Korean': [     ['korean', 'Korean']],
-    'Latin': [      ['newvulgate', 'Nova Vulgata'],
+    'kabyle': [     ['kabyle', 'Kabyle NT']],
+    'korean': [     ['korean', 'Korean']],
+    'latin': [      ['newvulgate', 'Nova Vulgata'],
                     ['vulgate', 'Vulgata Clementina']],
-    'Latvian': [    ['latvian', 'New Testament']],
-    'Lithuanian': [ ['lithuanian', 'Lithuanian']],
-    'Manx_Gaelic': [['manxgaelic', 'Manx Gaelic Esther Jonah 4 Gospels']],
-    'Maori': [      ['maori', 'Maori']],
-    'Myanmar_Burmse': [['judson', 'Judson 1835']],
-    'Norwegian': [  ['bibelselskap', 'Det Norsk Bibelselskap 1930']],
-    'Portuguese': [ ['almeida', 'Almeida Atualizada']],
-    'Potawatomi': [ ['potawatomi', 'Potawatomi Matthew Acts Lykins 1844']],
-    'Romani': [     ['rom', 'Romani NT E Lashi Viasta Gypsy']],
-    'Romanian': [   ['cornilescu', 'Cornilescu']],
-    'Russian': [    ['makarij', 'Makarij Translation Pentateuch 1825'],
+    'latvian': [    ['latvian', 'New Testament']],
+    'lithuanian': [ ['lithuanian', 'Lithuanian']],
+    'manx_Gaelic': [['manxgaelic', 'Manx Gaelic Esther Jonah 4 Gospels']],
+    'maori': [      ['maori', 'Maori']],
+    'myanmar_Burmse': [['judson', 'Judson 1835']],
+    'norwegian': [  ['bibelselskap', 'Det Norsk Bibelselskap 1930']],
+    'portuguese': [ ['almeida', 'Almeida Atualizada']],
+    'potawatomi': [ ['potawatomi', 'Potawatomi Matthew Acts Lykins 1844']],
+    'romani': [     ['rom', 'Romani NT E Lashi Viasta Gypsy']],
+    'romanian': [   ['cornilescu', 'Cornilescu']],
+    'russian': [    ['makarij', 'Makarij Translation Pentateuch 1825'],
                     ['synodal', 'Synodal Translation 1876'],
                     ['zhuromsky', 'Victor Zhuromsky NT']],
-    'Scottish_Gaelic': [['gaelic', 'Scots Gaelic Gospel of Mark']],
-    'Spanish': [    ['valera', 'Reina Valera 1909'],
+    'scottish_Gaelic': [['gaelic', 'Scots Gaelic Gospel of Mark']],
+    'spanish': [    ['valera', 'Reina Valera 1909'],
                     ['rv1858', 'Reina Valera NT 1858'],
                     ['sse', 'Sagradas Escrituras 1569']],
-    'Swahili': [    ['swahili', 'Swahili']],
-    'Swedish': [    ['swedish', 'Swedish 1917']],
-    'Tagalog': [    ['tagalog', 'Ang Dating Biblia 1905']],
-    'Tamajaq': [    ['tamajaq', 'Tamajaq Portions']],
-    'Thai': [       ['thai', 'Thai from kjv']],
-    'Turkish': [    ['tnt', 'NT 1987 1994'],
+    'swahili': [    ['swahili', 'Swahili']],
+    'swedish': [    ['swedish', 'Swedish 1917']],
+    'tagalog': [    ['tagalog', 'Ang Dating Biblia 1905']],
+    'tamajaq': [    ['tamajaq', 'Tamajaq Portions']],
+    'thai': [       ['thai', 'Thai from kjv']],
+    'turkish': [    ['tnt', 'NT 1987 1994'],
                     ['turkish', 'Turkish']],
-    'Ukrainian': [  ['ukranian', 'NT P Kulish 1871']],
-    'Uma': [        ['uma', 'Uma NT']],
-    'Vietnamese': [ ['vietnamese', 'Vietnamese 1934']],
-    'Wolof': [      ['wolof', 'Wolof NT']],
-    'Xhosa': [      ['xhosa', 'Xhosa']]
+    'ukrainian': [  ['ukranian', 'NT P Kulish 1871']],
+    'uma': [        ['uma', 'Uma NT']],
+    'vietnamese': [ ['vietnamese', 'Vietnamese 1934']],
+    'wolof': [      ['wolof', 'Wolof NT']],
+    'xhosa': [      ['xhosa', 'Xhosa']]
 }
 
 class INRI(callbacks.Plugin):
@@ -277,9 +277,11 @@ class INRI(callbacks.Plugin):
             # If translation is specified, check to make sure its available.
             translate = None
             if tr:
+                tr = tr[1:-1]
+                #irc.reply(tr, prefixNick=False)
                 translate = None
                 for lang in Translations:
-                    for translation in lang:
+                    for translation in Translations[lang]:
                         if tr == translation[0].casefold():
                             translate = tr
                             break
@@ -298,7 +300,28 @@ class INRI(callbacks.Plugin):
                     verses = list(book['chapter'].keys())
                     for verse in verses:
                         text = book['chapter'][verse]['verse'].replace('\r\n','')
-                        irc.reply(f'{Book[-1]} {ch}: "{verse}. {text}"', prefixNick=False)
+                        irc.reply(
+                            f'{Book[-1]} {ch}: "{verse}.'
+                            f' {text}" ({translate})', 
+                            prefixNick=False
+                        )
 
+    def bibles(self, irc, msg, args, language=None):
+        '''bibles <language>
+
+        Lists bible translations for a particular language or all languages.
+        '''
+        translations = []
+        if language:
+            for translation in Translations[language[0].casefold()]:
+                tr = translation[0]
+                name = translation[1]
+                translations.append(f'{name} ({tr})')
+        else:
+            for language in Translations:
+                translations.append(language)
+        translations = ', '.join(translations)
+        irc.reply(f'{translations}', prefixNick=False)
+    bibles = wrap(bibles, [any('text')])
 
 Class = INRI
