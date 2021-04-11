@@ -177,6 +177,7 @@ Translations = {
     'xhosa': [      ['xhosa', 'Xhosa']]
 }
 
+
 class INRI(callbacks.Plugin):
     def __init__(self, irc):
         self.__parent = super(INRI, self)
@@ -207,7 +208,7 @@ class INRI(callbacks.Plugin):
         '''Make a request to getbible.net JSON API and parse response.'''
         # JSON API query URL.
         url = f'http://getbible.net/json?p={p}&v={v}'
-        log.error(f'Requesting {url}')
+        log.info(f'Requesting {url}')
         # Form API request for passage and version.
         request = Request(url)
         # Set a User-Agent header.
@@ -306,6 +307,7 @@ class INRI(callbacks.Plugin):
                             prefixNick=False
                         )
 
+
     def bibles(self, irc, msg, args, language=None):
         '''bibles <language>
 
@@ -323,5 +325,6 @@ class INRI(callbacks.Plugin):
         translations = ', '.join(translations)
         irc.reply(f'{translations}', prefixNick=False)
     bibles = wrap(bibles, [any('text')])
+
 
 Class = INRI
