@@ -43,7 +43,7 @@ Books = [
     ['At','Acts'], ['Amos'], ['Baruch'], ['Canticles'], ['1Chronicles'], 
     ['2Chronicles'], ['Colossians'], ['1Corinthians'], ['2Corinthians'], 
     ['Dn','Daniel'], ['Dt','Deuteronomy'], ['Ecclesiastes'], ['Ephesians'], 
-    ['Er','Ezra'], ['Esther'], ['Exodus'], ['Ezekiel'], ['Galatians'], 
+    ['Esther'], ['Exodus'], ['Ezekiel'], ['Er','Ezra'], ['Galatians'], 
     ['Gn','Genesis'], ['Hb','Habakkuk'], ['Hg','Haggai'], ['Hosea'], 
     ['Isaiah'], ['James'], ['Jb','Job'], ['Jd','Jude'], ['Jeremiah'], 
     ['Jg','Judges'], ['Jl','Joel'], ['Jn','John'], ['1Jn','1John'], 
