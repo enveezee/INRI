@@ -299,6 +299,21 @@ class INRI(callbacks.Plugin):
                 versesText=[]
                 for book in bible['book']:
                     verses = list(book['chapter'].keys())
+                    
+                    # ! API responses are returning more verses than requested.
+                    # the following attempts to resolve this:
+                    if not vs.isdigit():
+                        # if the verses are a range, count the number in range.
+                        if '-' in vs:
+                            b, e = vs.split('-')
+                            v = int(e) - int(b)
+                        # if the verses are a list, count the number in list.
+                        elif ',' in vs:
+                            v = len(vs.split(','))
+                        verses = verses[0:v+1]
+                    else:
+                        verses = verses[0:1]
+                    
                     for verse in verses:
                         text = book['chapter'][verse]['verse'].replace('\r\n','')
                         irc.reply(
