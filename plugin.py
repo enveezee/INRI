@@ -1,5 +1,5 @@
 ###
-# Copyright (c) 2021, nvz <https://github.com/enveezee>
+# Copyright (c) 2021, 2023 nvz <https://github.com/enveezee>
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -40,23 +40,27 @@ import supybot.log as log
 Books = [
     # * Include alternate short names that aren't startswith() of actual name.
     # ! Last entry of the list should be the one you want the API to use.
-    ['At','Acts'], ['Amos'], ['Baruch'], ['Canticles'], ['1Chronicles'], 
-    ['2Chronicles'], ['Colossians'], ['1Corinthians'], ['2Corinthians'], 
-    ['Dn','Daniel'], ['Dt','Deuteronomy'], ['Ecclesiastes'], ['Ephesians'], 
-    ['Esther'], ['Exodus'], ['Ezekiel'], ['Er','Ezra'], ['Galatians'], 
-    ['Gn','Genesis'], ['Hb','Habakkuk'], ['Hg','Haggai'], ['Hosea'], 
-    ['Isaiah'], ['James'], ['Jb','Job'], ['Jd','Jude'], ['Jeremiah'], 
-    ['Jg','Judges'], ['Jl','Joel'], ['Jn','John'], ['1Jn','1John'], 
-    ['2Jn','2John'], ['3Jn','3John'], ['Jonah'], ['Js','Joshua'], ['1Kings'], 
-    ['2Kings'], ['Lm','Lamentations'], ['Lv','Leviticus'], ['Lk','Luke'], 
-    ['1Maccabees'], ['2Maccabees'], ['Malachi'], ['Micah'], ['Mk','Mark'], 
-    ['Mt','Matthew'], ['Nahum'], ['Nehemiah'], ['Nb','Nm','Numbers'], 
-    ['Obadiah'], ['1Peter'], ['2Peter'], ['Philippians'], ['Pm','Philemon'], 
-    ['Pv','Prv','Proverbs'], ['Psm','Psalms'], ['Re','Revelation'], ['Romans'], 
-    ['Rth','Ruth'], ['Sirach'], ['1Sm','1Samuel'], ['2Sm','2Samuel'], 
-    ['SongofSolomon'], ['1Thessalonians'], ['2Thessalonians'], 
-    ['1Tm','1Timothy'], ['2Tm','2Timothy'], ['Tobit'], ['Tt','Titus'], 
-    ['Wisdom'], ['Zc','Zechariah'], ['Zp','Zephaniah']
+    # ! Books must be in order since getbible v2 API uses numbers not names.
+
+    # Old Testament (1-39)
+    ['Gn','Genesis'], ['Exodus'], ['Lv','Leviticus'], ['Nb','Nm','Numbers'],
+    ['Dt','Deuteronomy'], ['Js','Joshua'], ['Jg','Judges'], ['Rth','Ruth'],
+    ['1Sm','1Samuel'], ['2Sm','2Samuel'], ['1Kings'], ['2Kings'],
+    ['1Chronicles'], ['2Chronicles'], ['Er','Ezra'], ['Nehemiah'], ['Esther'],
+    ['Jb','Job'], ['Psm','Psalms'], ['Pv','Prv','Proverbs'], ['Ecclesiastes'],
+    ['SongofSolomon'], ['Isaiah'], ['Jeremiah'], ['Lm','Lamentations'], 
+    ['Ezekiel'], ['Dn','Daniel'], ['Hosea'], ['Jl','Joel'], ['Amos'], 
+    ['Obadiah'],  ['Jonah'], ['Micah'], ['Nahum'], ['Hb','Habakkuk'], 
+    ['Zp','Zephaniah'], ['Hg','Haggai'], ['Zc','Zechariah'], ['Malachi'],
+
+    # New Testament (40-66)
+    ['Mt','Matthew'], ['Mk','Mark'], ['Lk','Luke'], ['Jn','John'],
+    ['At','Acts'], ['Romans'],  ['1Corinthians'], ['2Corinthians'],
+    ['Galatians'], ['Ephesians'], ['Philippians'], ['Colossians'], 
+    ['1Thessalonians'], ['2Thessalonians'], ['1Tm','1Timothy'], 
+    ['2Tm','2Timothy'], ['Tt','Titus'], ['Pm','Philemon'], ['Hebrews'],
+    ['James'], ['1Peter'], ['2Peter'], ['1Jn','1John'], ['2Jn','2John'],
+    ['3Jn','3John'], ['Jd','Jude'], ['Re','Revelation'],
 ]
 
 RegExp = [
@@ -183,7 +187,7 @@ class INRI(callbacks.Plugin):
         self.__parent = super(INRI, self)
         self.__parent.__init__(irc)
 
- 
+
     def doPrivmsg(self, irc, msg):
         '''Look for Bible citations made in the channel.'''
         channel = msg.args[0]
@@ -204,11 +208,10 @@ class INRI(callbacks.Plugin):
         self.iam(irc, msg)
 
 
-    def getbible(self, p, v):
+    def getbible(self, t, b, c):
         '''Make a request to getbible.net JSON API and parse response.'''
         # JSON API query URL.
-        url = f'http://getbible.net/json?p={p}&v={v}'
-        log.info(f'Requesting {url}')
+        url = f'https://api.getbible.net/v2/{t}/{b}/{c}.json'
         # Form API request for passage and version.
         request = Request(url)
         # Set a User-Agent header.
@@ -225,17 +228,17 @@ class INRI(callbacks.Plugin):
         # Extract headers from the HTTPResponse.
         headers = dict(response.getheaders())
         # Check to see if the response is JSON.
-        # ! Most this code is meaningless, the API doesn't return properly.
-        if 'text/html' in headers['Content-Type']:
+        if 'application/json' in headers['Content-Type']:
             try:
                 # Parse the JSON response.
-                bible = loads(response.read()[1:-2]) # ! Sliced to remove ();
+                bible = loads(response.read()) 
             except JSONDecodeError as e:
                 # Log JSON parsing errors and return.
                 log.error(f'JSONDecodeError: {e.msg}')
                 log.debug(f'Pos:{e.pos} Line:{e.lineno} Col:{e.colno}')
                 log.debug(f'{e.doc}')
                 return None
+            log.error(f'JSON Decoded.')
             # Return successfully parsed JSON.
             return bible
         else:
@@ -253,73 +256,68 @@ class INRI(callbacks.Plugin):
         # Search message for (possible) Bible citations.
         citations = findall(''.join(RegExp), message)
 
-        # Iterate over each possible citation found.
-        for citation in citations:
-            # Strip matches, casefold, and extract them.
-            bk, ch, vs, ls, tr = [s.strip().casefold() for s in citation]
-
-            # Check bk against Books list, assign it to book if found.
-            book = None
-            # Each valid book in Books list.
-            for Book in Books:
-                # Each matchable title for that book.
-                for title in Book:
-                    # If bk matches a title.
-                    if title.casefold().startswith(bk):
-                        # Set book to last title in this list of titles.
-                        book = Book[-1]
-                        break
-                if book:
-                    break
-
-            if not book:
-                return
-
-            # If translation is specified, check to make sure its available.
-            translate = None
-            if tr:
-                tr = tr[1:-1]
-                #irc.reply(tr, prefixNick=False)
-                translate = None
-                for lang in Translations:
-                    for translation in Translations[lang]:
-                        if tr == translation[0].casefold():
-                            translate = tr
+        if citations:
+            # Iterate over each possible citation found.
+            for citation in citations:
+                # Strip matches, casefold, and extract them.
+                bk, ch, vs, ls, tr = [s.strip().casefold() for s in citation]
+                # Check bk against Books list, return book number if found.
+                book = None
+                bookNo = 0
+                # Each valid book in Books list.
+                for Book in Books:
+                    bookNo = bookNo + 1
+                    # Each matchable title for that book.
+                    for title in Book:
+                        # If bk matches a title.
+                        if title.casefold().startswith(bk) or title == bk:
+                            book = bookNo
+                            log.error(f'{Book} : {book}')
                             break
-                    if translate:
-                        break
+                        
+                if not book:
+                    log.error(f'Book not found.')
+                    return
 
-            if not translate:
-                translate = self.registryValue('defaultBible', channel=channel)
+                if bk == 'ez':   # Fix for Ezekial over Ezra
+                    book = 26
 
-            bible = self.getbible(f'{bk}{ch}:{vs}{ls}', translate)
+                # If translation is specified, check to make sure its available.
+                translate = None
+                if tr:
+                    tr = tr[1:-1]
+                    translate = None
+                    for lang in Translations:
+                        for translation in Translations[lang]:
+                            if tr == translation[0].casefold():
+                                translate = tr
+                                break
+                        if translate:
+                            break
 
-            if bible:
+                if not translate:
+                    translate = self.registryValue('defaultBible', channel=channel)
 
                 versesText=[]
-                for book in bible['book']:
-                    verses = list(book['chapter'].keys())
-                    
-                    # ! API responses are returning more verses than requested.
-                    # the following attempts to resolve this:
-                    if not vs.isdigit():
-                        # if the verses are a range, count the number in range.
-                        if '-' in vs:
-                            b, e = vs.split('-')
-                            v = int(e) - int(b)
-                        # if the verses are a list, count the number in list.
-                        elif ',' in vs:
-                            v = len(vs.split(','))
-                        verses = verses[0:v+1]
-                    else:
-                        verses = verses[0:1]
-                    
-                    for verse in verses:
-                        text = book['chapter'][verse]['verse'].replace('\r\n','')
-                        irc.reply(
-                            f'{Book[-1]} {ch}: "{verse}.'
-                            f' {text}" ({translate})', 
-                            prefixNick=False
+                payload = self.getbible(translate, book, ch)
+                verses = payload['verses']
+
+                # if the verses are a range, enumerate a list of those verses
+                if '-' in vs:
+                    b, e = vs.split('-')
+                    versesCited = list(range(int(b), int(e) + 1))
+                # if the verses are a list, make a list of verses
+                elif ls:
+                    versesCited = [int(vs)] + [int(v) for v in ls.split(',')[1:]]
+                else:
+                    versesCited = [int(vs)]
+
+                for verse in versesCited:
+                    text = verses[verse - 1]['text']
+                    irc.reply(
+                        f'{Books[book - 1][-1]} {ch}: "{verse}.'
+                        f' {text}" ({translate})', 
+                        prefixNick=False
                         )
 
 
